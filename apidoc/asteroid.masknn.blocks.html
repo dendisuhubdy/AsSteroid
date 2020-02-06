@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.masknn.blocks module &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="asteroid.masknn.norms module" href="asteroid.masknn.norms.html" />
+    <link rel="prev" title="asteroid.masknn.activations module" href="asteroid.masknn.activations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> asteroid
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="asteroid.html">asteroid package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="asteroid.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="asteroid.data.html">asteroid.data package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.engine.html">asteroid.engine package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.filterbanks.html">asteroid.filterbanks package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.losses.html">asteroid.losses package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="asteroid.masknn.html">asteroid.masknn package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="asteroid.masknn.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="asteroid.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="asteroid.html">asteroid package</a> &raquo;</li>
+        
+          <li><a href="asteroid.masknn.html">asteroid.masknn package</a> &raquo;</li>
+        
+      <li>asteroid.masknn.blocks module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apidoc/asteroid.masknn.blocks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-asteroid.masknn.blocks">
+<span id="asteroid-masknn-blocks-module"></span><h1>asteroid.masknn.blocks module<a class="headerlink" href="#module-asteroid.masknn.blocks" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">NN blocks for separators.</div>
+<div class="line">&#64;author : Manuel Pariente, Inria-Nancy</div>
+</div>
+<dl class="class">
+<dt id="asteroid.masknn.blocks.Conv1DBlock">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.blocks.</code><code class="sig-name descname">Conv1DBlock</code><span class="sig-paren">(</span><em class="sig-param">in_chan</em>, <em class="sig-param">hid_chan</em>, <em class="sig-param">skip_out_chan</em>, <em class="sig-param">kernel_size</em>, <em class="sig-param">padding</em>, <em class="sig-param">dilation</em>, <em class="sig-param">norm_type='gLN'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#Conv1DBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.Conv1DBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>One dimensional convolutional block, as proposed in [1].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of input channels.</p></li>
+<li><p><strong>hid_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of hidden channels in the depth-wise
+convolution.</p></li>
+<li><p><strong>skip_out_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of channels in the skip convolution.</p></li>
+<li><p><strong>kernel_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Size of the depth-wise convolutional kernel.</p></li>
+<li><p><strong>padding</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Padding of the depth-wise convolution.</p></li>
+<li><p><strong>dilation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Dilation of the depth-wise convolution.</p></li>
+<li><p><strong>norm_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – <p>Type of normalization to use. To choose from</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'gLN'</span></code>: global Layernorm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'cLN'</span></code>: channelwise Layernorm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'cgLN'</span></code>: cumulative global Layernorm</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>[1] : “Conv-TasNet: Surpassing ideal time-frequency magnitude masking
+for speech separation” TASLP 2019 Yi Luo, Nima Mesgarani
+<a class="reference external" href="https://arxiv.org/abs/1809.07454">https://arxiv.org/abs/1809.07454</a></p>
+<dl class="method">
+<dt id="asteroid.masknn.blocks.Conv1DBlock.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#Conv1DBlock.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.Conv1DBlock.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input shape [batch, feats, seq]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.masknn.blocks.DPRNN">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.blocks.</code><code class="sig-name descname">DPRNN</code><span class="sig-paren">(</span><em class="sig-param">in_chan</em>, <em class="sig-param">n_src</em>, <em class="sig-param">out_chan=None</em>, <em class="sig-param">bn_chan=128</em>, <em class="sig-param">hid_size=128</em>, <em class="sig-param">chunk_size=100</em>, <em class="sig-param">hop_size=None</em>, <em class="sig-param">n_repeats=6</em>, <em class="sig-param">norm_type='gLN'</em>, <em class="sig-param">mask_act='sigmoid'</em>, <em class="sig-param">bidirectional=True</em>, <em class="sig-param">rnn_type='LSTM'</em>, <em class="sig-param">num_layers=1</em>, <em class="sig-param">dropout=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#DPRNN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.DPRNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Dual-path RNN Network for Single-Channel Source Separation</p>
+<blockquote>
+<div><p>Method introduced in [1].</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of input filters.</p></li>
+<li><p><strong>n_src</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of masks to estimate.</p></li>
+<li><p><strong>out_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – Number of bins in the estimated masks.
+Defaults to <cite>in_chan</cite>.</p></li>
+<li><p><strong>bn_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of channels after the bottleneck.
+Defaults to 128.</p></li>
+<li><p><strong>hid_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of neurons in the RNNs cell state.
+Defaults to 128.</p></li>
+<li><p><strong>chunk_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – window size of overlap and add processing.
+Defaults to 100.</p></li>
+<li><p><strong>hop_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.8)"><em>None</em></a>) – hop size (stride) of overlap and add processing.
+Default to <cite>chunk_size // 2</cite> (50% overlap).</p></li>
+<li><p><strong>n_repeats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of repeats. Defaults to 6.</p></li>
+<li><p><strong>norm_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – <p>Type of normalization to use. To choose from</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'gLN'</span></code>: global Layernorm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'cLN'</span></code>: channelwise Layernorm</p></li>
+</ul>
+</p></li>
+<li><p><strong>mask_act</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – Which non-linear function to generate mask.</p></li>
+<li><p><strong>bidirectional</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) – True for bidirectional Inter-Chunk RNN
+(Intra-Chunk is always bidirectional).</p></li>
+<li><p><strong>rnn_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – Type of RNN used. Choose between <code class="docutils literal notranslate"><span class="pre">'RNN'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'LSTM'</span></code> and <code class="docutils literal notranslate"><span class="pre">'GRU'</span></code>.</p></li>
+<li><p><strong>num_layers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of layers in each RNN.</p></li>
+<li><p><strong>dropout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>, </em><em>optional</em>) – Dropout ratio, must be in [0,1].</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>[1] “Dual-path RNN: efficient long sequence modeling for
+time-domain single-channel speech separation”, Yi Luo, Zhuo Chen
+and Takuya Yoshioka. <a class="reference external" href="https://arxiv.org/abs/1910.06379">https://arxiv.org/abs/1910.06379</a></p>
+<dl class="method">
+<dt id="asteroid.masknn.blocks.DPRNN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">mixture_w</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#DPRNN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.DPRNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mixture_w</strong> (<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – Tensor of shape
+[batch, n_filters, n_frames]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a></dt><dd><p>estimated mask of shape [batch, n_src, n_filters, n_frames]</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.masknn.blocks.DPRNN.get_config">
+<code class="sig-name descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#DPRNN.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.DPRNN.get_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.masknn.blocks.DPRNNBlock">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.blocks.</code><code class="sig-name descname">DPRNNBlock</code><span class="sig-paren">(</span><em class="sig-param">in_chan</em>, <em class="sig-param">hid_size</em>, <em class="sig-param">norm_type='gLN'</em>, <em class="sig-param">bidirectional=True</em>, <em class="sig-param">rnn_type='LSTM'</em>, <em class="sig-param">num_layers=1</em>, <em class="sig-param">dropout=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#DPRNNBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.DPRNNBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Dual-Path RNN Block as proposed in [1].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of input channels.</p></li>
+<li><p><strong>hid_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of hidden neurons in the RNNs.</p></li>
+<li><p><strong>norm_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – Type of normalization to use. To choose from
+- <code class="docutils literal notranslate"><span class="pre">'gLN'</span></code>: global Layernorm
+- <code class="docutils literal notranslate"><span class="pre">'cLN'</span></code>: channelwise Layernorm</p></li>
+<li><p><strong>bidirectional</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) – True for bidirectional Inter-Chunk RNN.</p></li>
+<li><p><strong>rnn_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – Type of RNN used. Choose from <code class="docutils literal notranslate"><span class="pre">'RNN'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'LSTM'</span></code> and <code class="docutils literal notranslate"><span class="pre">'GRU'</span></code>.</p></li>
+<li><p><strong>num_layers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of layers used in each RNN.</p></li>
+<li><p><strong>dropout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>, </em><em>optional</em>) – Dropout ratio. Must be in [0, 1].</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>[1] “Dual-path RNN: efficient long sequence modeling for
+time-domain single-channel speech separation”, Yi Luo, Zhuo Chen
+and Takuya Yoshioka. <a class="reference external" href="https://arxiv.org/abs/1910.06379">https://arxiv.org/abs/1910.06379</a></p>
+<dl class="method">
+<dt id="asteroid.masknn.blocks.DPRNNBlock.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#DPRNNBlock.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.DPRNNBlock.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input shape : [batch, feats, chunk_size, num_chunks]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.masknn.blocks.SingleRNN">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.blocks.</code><code class="sig-name descname">SingleRNN</code><span class="sig-paren">(</span><em class="sig-param">rnn_type</em>, <em class="sig-param">input_size</em>, <em class="sig-param">hidden_size</em>, <em class="sig-param">n_layers=1</em>, <em class="sig-param">dropout=0</em>, <em class="sig-param">bidirectional=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#SingleRNN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.SingleRNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Module for a RNN block.</p>
+<p>Inspired from <a class="reference external" href="https://github.com/yluo42/TAC/blob/master/utility/models.py">https://github.com/yluo42/TAC/blob/master/utility/models.py</a>
+Licensed under CC BY-NC-SA 3.0 US.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rnn_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Select from <code class="docutils literal notranslate"><span class="pre">'RNN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LSTM'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GRU'</span></code>. Can
+also be passed in lowercase letters.</p></li>
+<li><p><strong>input_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Dimension of the input feature. The input should have
+shape [batch, seq_len, input_size].</p></li>
+<li><p><strong>hidden_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Dimension of the hidden state.</p></li>
+<li><p><strong>n_layers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of layers used in RNN. Default is 1.</p></li>
+<li><p><strong>dropout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>, </em><em>optional</em>) – Dropout ratio. Default is 0.</p></li>
+<li><p><strong>bidirectional</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether the RNN layers are
+bidirectional. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="asteroid.masknn.blocks.SingleRNN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">inp</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#SingleRNN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.SingleRNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input shape [batch, seq, feats]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.masknn.blocks.TDConvNet">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.blocks.</code><code class="sig-name descname">TDConvNet</code><span class="sig-paren">(</span><em class="sig-param">in_chan</em>, <em class="sig-param">n_src</em>, <em class="sig-param">out_chan=None</em>, <em class="sig-param">n_blocks=8</em>, <em class="sig-param">n_repeats=3</em>, <em class="sig-param">bn_chan=128</em>, <em class="sig-param">hid_chan=512</em>, <em class="sig-param">skip_chan=128</em>, <em class="sig-param">kernel_size=3</em>, <em class="sig-param">norm_type='gLN'</em>, <em class="sig-param">mask_act='relu'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#TDConvNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.TDConvNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Temporal Convolutional network used in ConvTasnet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of input filters.</p></li>
+<li><p><strong>n_src</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of masks to estimate.</p></li>
+<li><p><strong>out_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of bins in the estimated masks.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>out_chan = in_chan</cite>.</p></li>
+<li><p><strong>n_blocks</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of convolutional blocks in each
+repeat. Defaults to 8.</p></li>
+<li><p><strong>n_repeats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of repeats. Defaults to 3.</p></li>
+<li><p><strong>bn_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of channels after the bottleneck.</p></li>
+<li><p><strong>hid_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of channels in the convolutional
+blocks.</p></li>
+<li><p><strong>skip_chan</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Number of channels in the skip connections.</p></li>
+<li><p><strong>kernel_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Kernel size in convolutional blocks.</p></li>
+<li><p><strong>norm_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – To choose from <code class="docutils literal notranslate"><span class="pre">'BN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'gLN'</span></code>,
+<code class="docutils literal notranslate"><span class="pre">'cLN'</span></code>.</p></li>
+<li><p><strong>mask_act</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a><em>, </em><em>optional</em>) – Which non-linear function to generate mask.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="asteroid.masknn.blocks.TDConvNet.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">mixture_w</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#TDConvNet.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.TDConvNet.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mixture_w</strong> (<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – Tensor of shape
+[batch, n_filters, n_frames]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> –     estimated mask of shape [batch, n_src, n_filters, n_frames]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.masknn.blocks.TDConvNet.get_config">
+<code class="sig-name descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/blocks.html#TDConvNet.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.blocks.TDConvNet.get_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="asteroid.masknn.norms.html" class="btn btn-neutral float-right" title="asteroid.masknn.norms module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="asteroid.masknn.activations.html" class="btn btn-neutral float-left" title="asteroid.masknn.activations module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Manuel Pariente, Samuele Cornell, Sunit Sivasankaran, Mathieu Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

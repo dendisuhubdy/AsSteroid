@@ -1,0 +1,25 @@
+asteroid package
+================
+
+.. automodule:: asteroid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+   asteroid.data
+   asteroid.engine
+   asteroid.filterbanks
+   asteroid.losses
+   asteroid.masknn
+
+Submodules
+----------
+
+.. toctree::
+
+   asteroid.utils

@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.filterbanks &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> asteroid
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../apidoc/asteroid.html">asteroid package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>asteroid.filterbanks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for asteroid.filterbanks</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">| Convenient methods for filterbanks.</span>
+<span class="sd">| @author : Manuel Pariente, Inria-Nancy</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">.analytic_free_fb</span> <span class="kn">import</span> <span class="n">AnalyticFreeFB</span>
+<span class="kn">from</span> <span class="nn">.free_fb</span> <span class="kn">import</span> <span class="n">FreeFB</span>
+<span class="kn">from</span> <span class="nn">.param_sinc_fb</span> <span class="kn">import</span> <span class="n">ParamSincFB</span>
+<span class="kn">from</span> <span class="nn">.stft_fb</span> <span class="kn">import</span> <span class="n">STFTFB</span>
+<span class="kn">from</span> <span class="nn">.enc_dec</span> <span class="kn">import</span> <span class="n">Filterbank</span><span class="p">,</span> <span class="n">Encoder</span><span class="p">,</span> <span class="n">Decoder</span><span class="p">,</span> <span class="n">NoEncoder</span>
+
+
+<div class="viewcode-block" id="make_enc_dec"><a class="viewcode-back" href="../../apidoc/asteroid.filterbanks.html#asteroid.filterbanks.make_enc_dec">[docs]</a><span class="k">def</span> <span class="nf">make_enc_dec</span><span class="p">(</span><span class="n">fb_name</span><span class="p">,</span> <span class="n">mask_mode</span><span class="o">=</span><span class="s1">&#39;reim&#39;</span><span class="p">,</span> <span class="n">inp_mode</span><span class="o">=</span><span class="s1">&#39;reim&#39;</span><span class="p">,</span>
+                 <span class="n">who_is_pinv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Creates congruent encoder and decoder from the same filterbank family.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        fb_name (str, className): Filterbank family from which to make encoder</span>
+<span class="sd">            and decoder. To choose from among [``&#39;free&#39;``, ``&#39;analytic_free&#39;``,</span>
+<span class="sd">            ``&#39;param_sinc&#39;``, ``&#39;stft&#39;``] and many more to come. Can also be</span>
+<span class="sd">            a class defined in a submodule in this subpackade (e.g.</span>
+<span class="sd">            :class:`~.FreeFB`).</span>
+<span class="sd">        mask_mode (str, optional): One of [``&#39;reim&#39;``, ``&#39;mag&#39;``, ``&#39;comp&#39;``].</span>
+<span class="sd">            Controls the way the time-frequency mask is applied to the input</span>
+<span class="sd">            representation in the `apply_mask` method.</span>
+<span class="sd">                -  ``&#39;reim&#39;`` or ``&#39;real&#39;`` corresponds to a real-valued</span>
+<span class="sd">                   filterbank where both the input and the mask consists in the</span>
+<span class="sd">                   concatenation of real and imaginary parts.</span>
+<span class="sd">                -  ``&#39;mag&#39;`` or ``&#39;mod&#39;`` corresponds to a magnitude (or</span>
+<span class="sd">                   modulus) mask applied to the complex filterbank output.</span>
+<span class="sd">                -  ``&#39;comp&#39;`` or ``&#39;complex&#39;`` corresponds to a complex mask:</span>
+<span class="sd">                   the input and the mask are point-wise multiplied in the</span>
+<span class="sd">                   complex sense.</span>
+<span class="sd">        inp_mode (str, optional): One of [``&#39;reim&#39;``, ``&#39;mag&#39;``, ``&#39;cat&#39;``].</span>
+<span class="sd">            Controls `post_processing_inputs` method which can be applied after</span>
+<span class="sd">            the forward.</span>
+<span class="sd">                -  ``&#39;reim&#39;`` or ``&#39;real&#39;`` corresponds to the concatenation</span>
+<span class="sd">                   of real and imaginary parts. (filterbank seen as</span>
+<span class="sd">                   real-valued).</span>
+<span class="sd">                -  ``&#39;mag&#39;`` or ``&#39;mod&#39;`` corresponds to the magnitude (or</span>
+<span class="sd">                   modulus)</span>
+<span class="sd">                   of the complex filterbank output.</span>
+<span class="sd">                -  ``&#39;cat&#39;`` or ``&#39;concat&#39;`` corresponds to the concatenation</span>
+<span class="sd">                   of both previous representations.</span>
+<span class="sd">        who_is_pinv (str, optional): If None, no pseudo-inverse filters will be</span>
+<span class="sd">            used. If string, among ``&#39;encoder&#39;``, ``&#39;decoder&#39;``, decides which</span>
+<span class="sd">            of ``Encoder`` or ``Decoder`` will be the pseudo inverse of the</span>
+<span class="sd">            other one.</span>
+<span class="sd">        **kwargs: Arguments which will be passed to the filterbank class.</span>
+<span class="sd">            Usual argument include `n_filters`, `kernel_size` and `stride` but</span>
+<span class="sd">            this will depend on the filterbank family.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Encoder instance, Decoder instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fb_class</span> <span class="o">=</span> <span class="n">get</span><span class="p">(</span><span class="n">fb_name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">who_is_pinv</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dec&#39;</span><span class="p">,</span> <span class="s1">&#39;decoder&#39;</span><span class="p">]:</span>
+        <span class="n">fb</span> <span class="o">=</span> <span class="n">fb_class</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">enc</span> <span class="o">=</span> <span class="n">Encoder</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="n">mask_mode</span><span class="o">=</span><span class="n">mask_mode</span><span class="p">,</span> <span class="n">inp_mode</span><span class="o">=</span><span class="n">inp_mode</span><span class="p">)</span>
+        <span class="c1"># Decoder filterbank is pseudo inverse of encoder filterbank.</span>
+        <span class="n">dec</span> <span class="o">=</span> <span class="n">Decoder</span><span class="o">.</span><span class="n">pinv_of</span><span class="p">(</span><span class="n">fb</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">who_is_pinv</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;enc&#39;</span><span class="p">,</span> <span class="s1">&#39;encoder&#39;</span><span class="p">]:</span>
+        <span class="n">fb</span> <span class="o">=</span> <span class="n">fb_class</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">dec</span> <span class="o">=</span> <span class="n">Decoder</span><span class="p">(</span><span class="n">fb</span><span class="p">)</span>
+        <span class="c1"># Encoder filterbank is pseudo inverse of decoder filterbank.</span>
+        <span class="n">enc</span> <span class="o">=</span> <span class="n">Encoder</span><span class="o">.</span><span class="n">pinv_of</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="n">mask_mode</span><span class="o">=</span><span class="n">mask_mode</span><span class="p">,</span> <span class="n">inp_mode</span><span class="o">=</span><span class="n">inp_mode</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fb</span> <span class="o">=</span> <span class="n">fb_class</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">enc</span> <span class="o">=</span> <span class="n">Encoder</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="n">mask_mode</span><span class="o">=</span><span class="n">mask_mode</span><span class="p">,</span> <span class="n">inp_mode</span><span class="o">=</span><span class="n">inp_mode</span><span class="p">)</span>
+        <span class="c1"># Filters between encoder and decoder should not be shared.</span>
+        <span class="n">fb</span> <span class="o">=</span> <span class="n">fb_class</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">dec</span> <span class="o">=</span> <span class="n">Decoder</span><span class="p">(</span><span class="n">fb</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">enc</span><span class="p">,</span> <span class="n">dec</span></div>
+
+
+<div class="viewcode-block" id="get"><a class="viewcode-back" href="../../apidoc/asteroid.filterbanks.html#asteroid.filterbanks.get">[docs]</a><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">identifier</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">identifier</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">identifier</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">identifier</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">identifier</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Could not interpret filterbank identifier: &#39;</span> <span class="o">+</span>
+                             <span class="nb">str</span><span class="p">(</span><span class="n">identifier</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">cls</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Could not interpret filterbank identifier: &#39;</span> <span class="o">+</span>
+                         <span class="nb">str</span><span class="p">(</span><span class="n">identifier</span><span class="p">))</span></div>
+
+
+<span class="c1"># Aliases.</span>
+<span class="n">free</span> <span class="o">=</span> <span class="n">FreeFB</span>
+<span class="n">analytic_free</span> <span class="o">=</span> <span class="n">AnalyticFreeFB</span>
+<span class="n">param_sinc</span> <span class="o">=</span> <span class="n">ParamSincFB</span>
+<span class="n">stft</span> <span class="o">=</span> <span class="n">STFTFB</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Manuel Pariente, Samuele Cornell, Sunit Sivasankaran, Mathieu Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+asteroid.losses.si\_sdr module
+==============================
+
+.. automodule:: asteroid.losses.si_sdr
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.losses.si_sdr &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> asteroid
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidoc/asteroid.html">asteroid package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>asteroid.losses.si_sdr</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for asteroid.losses.si_sdr</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">| Negative Scale invariant Signal to Distorsion Ratio (SI-SDR) losses.</span>
+<span class="sd">| @author : Manuel Pariente, Inria-Nancy</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">EPS</span> <span class="o">=</span> <span class="mf">1e-8</span>
+
+
+<div class="viewcode-block" id="pairwise_neg_sisdr"><a class="viewcode-back" href="../../../apidoc/asteroid.losses.si_sdr.html#asteroid.losses.si_sdr.pairwise_neg_sisdr">[docs]</a><span class="k">def</span> <span class="nf">pairwise_neg_sisdr</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">est_targets</span><span class="p">,</span> <span class="n">scale_invariant</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Measure pair-wise negative SI-SDR on a batch.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        targets (:class:`torch.Tensor`): Expected shape [batch, n_src, time].</span>
+<span class="sd">            Batch of training targets.</span>
+<span class="sd">        est_targets (:class:`torch.Tensor`): Expected shape [batch, n_src, time].</span>
+<span class="sd">            Batch of target estimates.</span>
+<span class="sd">        scale_invariant (bool): Whether to rescale the estimates to the targets.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`torch.Tensor`: with shape [batch, n_src, n_src].</span>
+<span class="sd">        Pair-wise losses.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; import torch</span>
+<span class="sd">        &gt;&gt;&gt; from asteroid.losses import PITLossWrapper</span>
+<span class="sd">        &gt;&gt;&gt; targets = torch.randn(10, 2, 32000)</span>
+<span class="sd">        &gt;&gt;&gt; est_targets = torch.randn(10, 2, 32000)</span>
+<span class="sd">        &gt;&gt;&gt; loss_func = PITLossWrapper(pairwise_neg_sisdr, mode=&#39;pairwise&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; loss = loss_func(targets, est_targets)</span>
+<span class="sd">        &gt;&gt;&gt; print(loss.size())</span>
+<span class="sd">        torch.Size([10, 2, 2])</span>
+
+<span class="sd">    References:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">targets</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">est_targets</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="c1"># if scale_invariant:</span>
+    <span class="c1"># Step 1. Zero-mean norm</span>
+    <span class="n">mean_source</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">mean_estimate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">est_targets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span> <span class="o">-</span> <span class="n">mean_source</span>
+    <span class="n">est_targets</span> <span class="o">=</span> <span class="n">est_targets</span> <span class="o">-</span> <span class="n">mean_estimate</span>
+    <span class="c1"># Step 2. Pair-wise SI-SDR. (Reshape to use broadcast)</span>
+    <span class="n">s_target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">s_estimate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">est_targets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">scale_invariant</span><span class="p">:</span>
+        <span class="c1"># [batch, n_src, n_src, 1]</span>
+        <span class="n">pair_wise_dot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s_estimate</span> <span class="o">*</span> <span class="n">s_target</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># [batch, 1, n_src, 1]</span>
+        <span class="n">s_target_energy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">s_target</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="n">EPS</span>
+        <span class="c1"># [batch, n_src, n_src, time]</span>
+        <span class="n">pair_wise_proj</span> <span class="o">=</span> <span class="n">pair_wise_dot</span> <span class="o">*</span> <span class="n">s_target</span> <span class="o">/</span> <span class="n">s_target_energy</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># [batch, n_src, n_src, time]</span>
+        <span class="n">pair_wise_proj</span> <span class="o">=</span> <span class="n">s_target</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s_target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">e_noise</span> <span class="o">=</span> <span class="n">s_estimate</span> <span class="o">-</span> <span class="n">pair_wise_proj</span>
+    <span class="c1"># [batch, n_src, n_src]</span>
+    <span class="n">pair_wise_si_sdr</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pair_wise_proj</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+                <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e_noise</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span>
+    <span class="n">pair_wise_losses</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">pair_wise_si_sdr</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pair_wise_losses</span></div>
+
+
+<div class="viewcode-block" id="nosrc_neg_sisdr"><a class="viewcode-back" href="../../../apidoc/asteroid.losses.si_sdr.html#asteroid.losses.si_sdr.nosrc_neg_sisdr">[docs]</a><span class="k">def</span> <span class="nf">nosrc_neg_sisdr</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">est_target</span><span class="p">,</span> <span class="n">scale_invariant</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Measure negative SI-SDR between a single source and its estimate.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target (:class:`torch.Tensor`): Expected shape [batch, time].</span>
+<span class="sd">            Batch of training target.</span>
+<span class="sd">        est_target (:class:`torch.Tensor`): Expected shape [batch, time].</span>
+<span class="sd">            Batch of target estimate.</span>
+<span class="sd">        scale_invariant (bool): Whether to rescale the estimate to the target.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`torch.Tensor`: with shape [batch]. Batch losses.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; import torch</span>
+<span class="sd">        &gt;&gt;&gt; from asteroid.losses import PITLossWrapper</span>
+<span class="sd">        &gt;&gt;&gt; targets = torch.randn(10, 2, 32000)</span>
+<span class="sd">        &gt;&gt;&gt; est_targets = torch.randn(10, 2, 32000)</span>
+<span class="sd">        &gt;&gt;&gt; loss_func = PITLossWrapper(nosrc_neg_sisdr, mode=&#39;wo_src&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; loss = loss_func(targets, est_targets)</span>
+<span class="sd">        &gt;&gt;&gt; print(loss.size())</span>
+<span class="sd">        torch.Size([10])</span>
+
+<span class="sd">    References:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">est_target</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="c1"># Step 1. Zero-mean norm</span>
+    <span class="n">mean_source</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">mean_estimate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">est_target</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">mean_source</span>
+    <span class="n">est_target</span> <span class="o">=</span> <span class="n">est_target</span> <span class="o">-</span> <span class="n">mean_estimate</span>
+    <span class="c1"># Step 2. Pair-wise SI-SDR. (Reshape to use broadcast)</span>
+    <span class="k">if</span> <span class="n">scale_invariant</span><span class="p">:</span>
+        <span class="c1"># [batch, 1]</span>
+        <span class="n">dot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">est_target</span> <span class="o">*</span> <span class="n">target</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># [batch, 1]</span>
+        <span class="n">s_target_energy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">target</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                    <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="n">EPS</span>
+        <span class="c1"># [batch, time]</span>
+        <span class="n">scaled_target</span> <span class="o">=</span> <span class="n">dot</span> <span class="o">*</span> <span class="n">target</span> <span class="o">/</span> <span class="n">s_target_energy</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># [batch, time]</span>
+        <span class="n">scaled_target</span> <span class="o">=</span> <span class="n">target</span>
+    <span class="n">e_noise</span> <span class="o">=</span> <span class="n">est_target</span> <span class="o">-</span> <span class="n">scaled_target</span>
+    <span class="c1"># [batch]</span>
+    <span class="n">si_sdr</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">scaled_target</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e_noise</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span>
+    <span class="n">losses</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">si_sdr</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">losses</span></div>
+
+
+<div class="viewcode-block" id="nonpit_neg_sisdr"><a class="viewcode-back" href="../../../apidoc/asteroid.losses.si_sdr.html#asteroid.losses.si_sdr.nonpit_neg_sisdr">[docs]</a><span class="k">def</span> <span class="nf">nonpit_neg_sisdr</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">est_targets</span><span class="p">,</span> <span class="n">scale_invariant</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Measure mean negative SI-SDR for a given permutation of source and</span>
+<span class="sd">        their estimates.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        targets (:class:`torch.Tensor`): Expected shape [batch, time].</span>
+<span class="sd">            Batch of training targets.</span>
+<span class="sd">        est_targets (:class:`torch.Tensor`): Expected shape [batch, time].</span>
+<span class="sd">            Batch of target estimates.</span>
+<span class="sd">        scale_invariant (bool): Whether to rescale the estimate to the target.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :class:`torch.Tensor`: with shape [batch].</span>
+<span class="sd">            Batch losses for this permutation.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        &gt;&gt;&gt; import torch</span>
+<span class="sd">        &gt;&gt;&gt; from asteroid.losses import PITLossWrapper</span>
+<span class="sd">        &gt;&gt;&gt; targets = torch.randn(10, 2, 32000)</span>
+<span class="sd">        &gt;&gt;&gt; est_targets = torch.randn(10, 2, 32000)</span>
+<span class="sd">        &gt;&gt;&gt; loss_func = PITLossWrapper(nonpit_neg_sisdr, mode=&#39;w_src&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; loss = loss_func(targets, est_targets)</span>
+<span class="sd">        &gt;&gt;&gt; print(loss.size())</span>
+<span class="sd">        torch.Size([10])</span>
+
+<span class="sd">    References:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">targets</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">est_targets</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="c1"># Step 1. Zero-mean norm</span>
+    <span class="n">mean_source</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">mean_estimate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">est_targets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span> <span class="o">-</span> <span class="n">mean_source</span>
+    <span class="n">est_targets</span> <span class="o">=</span> <span class="n">est_targets</span> <span class="o">-</span> <span class="n">mean_estimate</span>
+    <span class="c1"># Step 2. Pair-wise SI-SDR. (Reshape to use broadcast)</span>
+    <span class="k">if</span> <span class="n">scale_invariant</span><span class="p">:</span>
+        <span class="c1"># [batch, n_src]</span>
+        <span class="n">pair_wise_dot</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">est_targets</span> <span class="o">*</span> <span class="n">targets</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                  <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># [batch, n_src]</span>
+        <span class="n">s_target_energy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">targets</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                    <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="n">EPS</span>
+        <span class="c1"># [batch, n_src, time]</span>
+        <span class="n">scaled_targets</span> <span class="o">=</span> <span class="n">pair_wise_dot</span> <span class="o">*</span> <span class="n">targets</span> <span class="o">/</span> <span class="n">s_target_energy</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># [batch, n_src, time]</span>
+        <span class="n">scaled_targets</span> <span class="o">=</span> <span class="n">targets</span>
+    <span class="n">e_noise</span> <span class="o">=</span> <span class="n">est_targets</span> <span class="o">-</span> <span class="n">scaled_targets</span>
+    <span class="c1"># [batch, n_src]</span>
+    <span class="n">pair_wise_si_sdr</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">scaled_targets</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">e_noise</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span>
+    <span class="n">pair_wise_losses</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">pair_wise_si_sdr</span> <span class="o">+</span> <span class="n">EPS</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pair_wise_losses</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Manuel Pariente, Samuele Cornell, Sunit Sivasankaran, Mathieu Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

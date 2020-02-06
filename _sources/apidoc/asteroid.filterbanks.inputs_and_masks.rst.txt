@@ -1,0 +1,7 @@
+asteroid.filterbanks.inputs\_and\_masks module
+==============================================
+
+.. automodule:: asteroid.filterbanks.inputs_and_masks
+   :members:
+   :undoc-members:
+   :show-inheritance:

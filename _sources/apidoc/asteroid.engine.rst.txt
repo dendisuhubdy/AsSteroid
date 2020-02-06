@@ -1,0 +1,15 @@
+asteroid.engine package
+=======================
+
+.. automodule:: asteroid.engine
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   asteroid.engine.optimizers
+   asteroid.engine.system

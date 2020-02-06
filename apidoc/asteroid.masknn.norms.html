@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.masknn.norms module &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="asteroid.utils module" href="asteroid.utils.html" />
+    <link rel="prev" title="asteroid.masknn.blocks module" href="asteroid.masknn.blocks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> asteroid
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="asteroid.html">asteroid package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="asteroid.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="asteroid.data.html">asteroid.data package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.engine.html">asteroid.engine package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.filterbanks.html">asteroid.filterbanks package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.losses.html">asteroid.losses package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="asteroid.masknn.html">asteroid.masknn package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="asteroid.masknn.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="asteroid.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="asteroid.html">asteroid package</a> &raquo;</li>
+        
+          <li><a href="asteroid.masknn.html">asteroid.masknn package</a> &raquo;</li>
+        
+      <li>asteroid.masknn.norms module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apidoc/asteroid.masknn.norms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-asteroid.masknn.norms">
+<span id="asteroid-masknn-norms-module"></span><h1>asteroid.masknn.norms module<a class="headerlink" href="#module-asteroid.masknn.norms" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Normalization classes.</div>
+<div class="line">&#64;author : Manuel Pariente, Inria-Nancy</div>
+</div>
+<dl class="class">
+<dt id="asteroid.masknn.norms.ChanLN">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.norms.</code><code class="sig-name descname">ChanLN</code><span class="sig-paren">(</span><em class="sig-param">channel_size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/norms.html#ChanLN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.norms.ChanLN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.masknn.norms._LayerNorm</span></code></p>
+<p>Channel-wise Layer Normalization (chanLN).</p>
+<dl class="method">
+<dt id="asteroid.masknn.norms.ChanLN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/norms.html#ChanLN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.norms.ChanLN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies forward pass.</p>
+<p>Works for any input size &gt; 2D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – <cite>[batch, chan, *]</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – chanLN_x <cite>[batch, chan, *]</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.masknn.norms.CumLN">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.norms.</code><code class="sig-name descname">CumLN</code><span class="sig-paren">(</span><em class="sig-param">channel_size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/norms.html#CumLN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.norms.CumLN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.masknn.norms._LayerNorm</span></code></p>
+<p>Cumulative Global layer normalization(cumLN).</p>
+<dl class="method">
+<dt id="asteroid.masknn.norms.CumLN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/norms.html#CumLN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.norms.CumLN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – Shape <cite>[batch, channels, length]</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – cumLN_x <cite>[batch, channels, length]</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.masknn.norms.GlobLN">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.masknn.norms.</code><code class="sig-name descname">GlobLN</code><span class="sig-paren">(</span><em class="sig-param">channel_size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/norms.html#GlobLN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.norms.GlobLN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.masknn.norms._LayerNorm</span></code></p>
+<p>Global Layer Normalization (globLN).</p>
+<dl class="method">
+<dt id="asteroid.masknn.norms.GlobLN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/norms.html#GlobLN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.norms.GlobLN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies forward pass.</p>
+<p>Works for any input size &gt; 2D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – Shape <cite>[batch, chan, *]</cite></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – gLN_x <cite>[batch, chan, *]</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="asteroid.masknn.norms.cLN">
+<code class="sig-prename descclassname">asteroid.masknn.norms.</code><code class="sig-name descname">cLN</code><a class="headerlink" href="#asteroid.masknn.norms.cLN" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#asteroid.masknn.norms.ChanLN" title="asteroid.masknn.norms.ChanLN"><code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.masknn.norms.ChanLN</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="asteroid.masknn.norms.cgLN">
+<code class="sig-prename descclassname">asteroid.masknn.norms.</code><code class="sig-name descname">cgLN</code><a class="headerlink" href="#asteroid.masknn.norms.cgLN" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#asteroid.masknn.norms.CumLN" title="asteroid.masknn.norms.CumLN"><code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.masknn.norms.CumLN</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="asteroid.masknn.norms.gLN">
+<code class="sig-prename descclassname">asteroid.masknn.norms.</code><code class="sig-name descname">gLN</code><a class="headerlink" href="#asteroid.masknn.norms.gLN" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#asteroid.masknn.norms.GlobLN" title="asteroid.masknn.norms.GlobLN"><code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.masknn.norms.GlobLN</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="asteroid.masknn.norms.get">
+<code class="sig-prename descclassname">asteroid.masknn.norms.</code><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">identifier</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/masknn/norms.html#get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.masknn.norms.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="asteroid.utils.html" class="btn btn-neutral float-right" title="asteroid.utils module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="asteroid.masknn.blocks.html" class="btn btn-neutral float-left" title="asteroid.masknn.blocks module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Manuel Pariente, Samuele Cornell, Sunit Sivasankaran, Mathieu Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

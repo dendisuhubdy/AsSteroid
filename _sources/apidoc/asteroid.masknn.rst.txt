@@ -1,0 +1,16 @@
+asteroid.masknn package
+=======================
+
+.. automodule:: asteroid.masknn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   asteroid.masknn.activations
+   asteroid.masknn.blocks
+   asteroid.masknn.norms

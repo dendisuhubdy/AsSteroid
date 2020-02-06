@@ -1,0 +1,7 @@
+asteroid.masknn.blocks module
+=============================
+
+.. automodule:: asteroid.masknn.blocks
+   :members:
+   :undoc-members:
+   :show-inheritance:

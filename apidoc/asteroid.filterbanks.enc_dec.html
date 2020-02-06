@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>asteroid.filterbanks.enc_dec module &mdash; asteroid 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="asteroid.filterbanks.free_fb module" href="asteroid.filterbanks.free_fb.html" />
+    <link rel="prev" title="asteroid.filterbanks.analytic_free_fb module" href="asteroid.filterbanks.analytic_free_fb.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> asteroid
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="asteroid.html">asteroid package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="asteroid.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="asteroid.data.html">asteroid.data package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.engine.html">asteroid.engine package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="asteroid.filterbanks.html">asteroid.filterbanks package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="asteroid.filterbanks.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.losses.html">asteroid.losses package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="asteroid.masknn.html">asteroid.masknn package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="asteroid.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">asteroid</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="asteroid.html">asteroid package</a> &raquo;</li>
+        
+          <li><a href="asteroid.filterbanks.html">asteroid.filterbanks package</a> &raquo;</li>
+        
+      <li>asteroid.filterbanks.enc_dec module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apidoc/asteroid.filterbanks.enc_dec.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-asteroid.filterbanks.enc_dec">
+<span id="asteroid-filterbanks-enc-dec-module"></span><h1>asteroid.filterbanks.enc_dec module<a class="headerlink" href="#module-asteroid.filterbanks.enc_dec" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Base classes for filterbanks, encoders and decoders.</div>
+<div class="line">&#64;author : Manuel Pariente, Inria-Nancy</div>
+</div>
+<dl class="class">
+<dt id="asteroid.filterbanks.enc_dec.Decoder">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.filterbanks.enc_dec.</code><code class="sig-name descname">Decoder</code><span class="sig-paren">(</span><em class="sig-param">filterbank</em>, <em class="sig-param">is_pinv=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Decoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Decoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.filterbanks.enc_dec._EncDec</span></code></p>
+<p>Decoder class.</p>
+<p>Add decoding methods to Filterbank classes.
+Not intended to be subclassed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filterbank</strong> (<a class="reference internal" href="#asteroid.filterbanks.enc_dec.Filterbank" title="asteroid.filterbanks.enc_dec.Filterbank"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filterbank</span></code></a>) – The filterbank to use as an decoder.</p></li>
+<li><p><strong>is_pinv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to be the pseudo inverse of filterbank.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Decoder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">spec</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Decoder.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Decoder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies transposed convolution to a TF representation.</p>
+<p>This is equivalent to overlap-add.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spec</strong> (<a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a>) – 3D or 4D Tensor. The TF
+representation. (Output of <a class="reference internal" href="#asteroid.filterbanks.enc_dec.Encoder.forward" title="asteroid.filterbanks.enc_dec.Encoder.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">Encoder.forward()</span></code></a>).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference external" href="https://pytorch.org/docs/master/tensors.html#torch.Tensor" title="(in PyTorch vmaster (1.5.0a0+e76fa98 ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.Tensor</span></code></a> – The corresponding time domain signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Decoder.pinv_of">
+<em class="property">classmethod </em><code class="sig-name descname">pinv_of</code><span class="sig-paren">(</span><em class="sig-param">filterbank</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Decoder.pinv_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Decoder.pinv_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an Decoder, pseudo inverse of a filterbank or Encoder.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.filterbanks.enc_dec.Encoder">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.filterbanks.enc_dec.</code><code class="sig-name descname">Encoder</code><span class="sig-paren">(</span><em class="sig-param">filterbank</em>, <em class="sig-param">inp_mode='reim'</em>, <em class="sig-param">mask_mode='reim'</em>, <em class="sig-param">is_pinv=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Encoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">asteroid.filterbanks.enc_dec._EncDec</span></code></p>
+<p>Encoder class.</p>
+<p>Add encoding methods to Filterbank classes.
+Not intended to be subclassed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filterbank</strong> (<a class="reference internal" href="#asteroid.filterbanks.enc_dec.Filterbank" title="asteroid.filterbanks.enc_dec.Filterbank"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filterbank</span></code></a>) – The filterbank to use
+as an encoder.</p></li>
+<li><p><strong>is_pinv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – Whether to be the pseudo inverse of filterbank.</p></li>
+<li><p><strong>inp_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>One of [<code class="docutils literal notranslate"><span class="pre">'reim'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mag'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cat'</span></code>]. Controls
+<cite>post_processing_inputs</cite> method which can be applied after
+the forward.</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'reim'</span></code> or <code class="docutils literal notranslate"><span class="pre">'real'</span></code> corresponds to the concatenation of
+real and imaginary parts. (filterbank seen as real-valued).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'mag'</span></code> or <code class="docutils literal notranslate"><span class="pre">'mod'</span></code> corresponds to the magnitude (or
+modulus) of the complex filterbank output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'cat'</span></code> or <code class="docutils literal notranslate"><span class="pre">'concat'</span></code> corresponds to the concatenation of
+both previous representations.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>mask_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>One of [<code class="docutils literal notranslate"><span class="pre">'reim'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mag'</span></code>, <code class="docutils literal notranslate"><span class="pre">'comp'</span></code>]. Controls
+the way the time-frequency mask is applied to the input
+representation in the <a class="reference internal" href="#asteroid.filterbanks.enc_dec.Encoder.apply_mask" title="asteroid.filterbanks.enc_dec.Encoder.apply_mask"><code class="xref py py-func docutils literal notranslate"><span class="pre">apply_mask()</span></code></a> method.</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'reim'</span></code> or <code class="docutils literal notranslate"><span class="pre">'real'</span></code> corresponds to a real-valued
+filterbank where both the input and the mask consists in the
+concatenation of real and imaginary parts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'mag'</span></code> or <code class="docutils literal notranslate"><span class="pre">'mod'</span></code> corresponds to a magnitude (or
+modulus) mask applied to the complex filterbank output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'comp'</span></code> or <code class="docutils literal notranslate"><span class="pre">'complex'</span></code> corresponds to a complex mask:
+the input and the mask are point-wise multiplied in the
+complex sense.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>inp_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – </p></li>
+<li><p><strong>mask_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – </p></li>
+<li><p><strong>inp_func</strong> (<em>callable</em>) – </p></li>
+<li><p><strong>in_chan_mul</strong> – </p></li>
+<li><p><strong>mask_fun</strong> (<em>callable</em>) – </p></li>
+<li><p><strong>n_feats_out</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Encoder.apply_mask">
+<code class="sig-name descname">apply_mask</code><span class="sig-paren">(</span><em class="sig-param">tf_rep</em>, <em class="sig-param">mask</em>, <em class="sig-param">dim=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Encoder.apply_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Encoder.apply_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies real of complex masks <cite>forward</cite> output.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Encoder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">waveform</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Encoder.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Encoder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolve 1D torch.Tensor with filterbank.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Encoder.get_config">
+<code class="sig-name descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Encoder.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Encoder.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns dictionary of arguments to re-instantiate the class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Encoder.pinv_of">
+<em class="property">classmethod </em><code class="sig-name descname">pinv_of</code><span class="sig-paren">(</span><em class="sig-param">filterbank</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Encoder.pinv_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Encoder.pinv_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an Encoder, pseudo inverse of a filterbank or Decoder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Encoder.post_process_inputs">
+<code class="sig-name descname">post_process_inputs</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Encoder.post_process_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Encoder.post_process_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes real or complex representation from <cite>forward</cite> output.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.filterbanks.enc_dec.Filterbank">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.filterbanks.enc_dec.</code><code class="sig-name descname">Filterbank</code><span class="sig-paren">(</span><em class="sig-param">n_filters</em>, <em class="sig-param">kernel_size</em>, <em class="sig-param">stride=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Filterbank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Filterbank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Base Filterbank class.</p>
+<p>Each subclass has to implement a <cite>filters</cite> property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_filters</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Number of filters.</p></li>
+<li><p><strong>kernel_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – Length of the filters.</p></li>
+<li><p><strong>stride</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>optional</em>) – Stride of the conv or transposed conv. (Hop size).
+If None (default), set to <code class="docutils literal notranslate"><span class="pre">kernel_size</span> <span class="pre">//</span> <span class="pre">2</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>n_filters</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – </p></li>
+<li><p><strong>kernel_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – </p></li>
+<li><p><strong>stride</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Filterbank.filters">
+<em class="property">property </em><code class="sig-name descname">filters</code><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Filterbank.filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method for filters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.Filterbank.get_config">
+<code class="sig-name descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#Filterbank.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.Filterbank.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns dictionary of arguments to re-instantiate the class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asteroid.filterbanks.enc_dec.NoEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">asteroid.filterbanks.enc_dec.</code><code class="sig-name descname">NoEncoder</code><span class="sig-paren">(</span><em class="sig-param">inp_mode='reim'</em>, <em class="sig-param">mask_mode='reim'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#NoEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.NoEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Class to use for no neural encoder.</p>
+<p>This is a placeholder for precomputed features.
+The features can be complex with real and imaginary parts concatenated
+into the same axis. The same post processing and masking strategies are
+available as for the <a class="reference internal" href="#asteroid.filterbanks.enc_dec.Encoder" title="asteroid.filterbanks.enc_dec.Encoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">Encoder</span></code></a> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inp_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>One of [<code class="docutils literal notranslate"><span class="pre">'reim'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mag'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cat'</span></code>]. Controls
+<cite>post_processing_inputs</cite> method which can be applied after
+the forward.</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'reim'</span></code> or <code class="docutils literal notranslate"><span class="pre">'real'</span></code> corresponds to the concatenation of
+real and imaginary parts. (filterbank seen as real-valued).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'mag'</span></code> or <code class="docutils literal notranslate"><span class="pre">'mod'</span></code> corresponds to the magnitude (or
+modulus) of the complex filterbank output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'cat'</span></code> or <code class="docutils literal notranslate"><span class="pre">'concat'</span></code> corresponds to the concatenation
+of both previous representations.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>mask_mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – <p>One of [<code class="docutils literal notranslate"><span class="pre">'reim'</span></code>, <code class="docutils literal notranslate"><span class="pre">'mag'</span></code>, <code class="docutils literal notranslate"><span class="pre">'comp'</span></code>]. Controls
+the way the time-frequency mask is applied to the input
+representation in the <a class="reference internal" href="#asteroid.filterbanks.enc_dec.NoEncoder.apply_mask" title="asteroid.filterbanks.enc_dec.NoEncoder.apply_mask"><code class="xref py py-func docutils literal notranslate"><span class="pre">apply_mask()</span></code></a> method.</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'reim'</span></code> or <code class="docutils literal notranslate"><span class="pre">'real'</span></code> corresponds to a real-valued
+filterbank where both the input and the mask consists in the
+concatenation of real and imaginary parts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'mag'</span></code> or <code class="docutils literal notranslate"><span class="pre">'mod'</span></code> corresponds to a magnitude (or
+modulus) mask applied to the complex filterbank output.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'comp'</span></code> or <code class="docutils literal notranslate"><span class="pre">'complex'</span></code> corresponds to a complex mask:
+the input and the mask are point-wise multiplied in the
+complex sense.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>By default:</dt><dd><ul class="simple">
+<li><p>The forward returns the input.</p></li>
+<li><p>The input post-processing is the identity.</p></li>
+<li><p>The mask is applied to the input features.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.NoEncoder.apply_mask">
+<code class="sig-name descname">apply_mask</code><span class="sig-paren">(</span><em class="sig-param">tf_rep</em>, <em class="sig-param">mask</em>, <em class="sig-param">dim=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#NoEncoder.apply_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.NoEncoder.apply_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.NoEncoder.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">features</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#NoEncoder.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.NoEncoder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.NoEncoder.get_config">
+<code class="sig-name descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#NoEncoder.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.NoEncoder.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns dictionary of arguments to re-instantiate the class.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asteroid.filterbanks.enc_dec.NoEncoder.post_process_inputs">
+<code class="sig-name descname">post_process_inputs</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/asteroid/filterbanks/enc_dec.html#NoEncoder.post_process_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#asteroid.filterbanks.enc_dec.NoEncoder.post_process_inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="asteroid.filterbanks.free_fb.html" class="btn btn-neutral float-right" title="asteroid.filterbanks.free_fb module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="asteroid.filterbanks.analytic_free_fb.html" class="btn btn-neutral float-left" title="asteroid.filterbanks.analytic_free_fb module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Manuel Pariente, Samuele Cornell, Sunit Sivasankaran, Mathieu Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
